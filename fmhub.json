@@ -1,0 +1,15 @@
+{
+  "what": "Modular Landscape turns the FM-1 into a bowed folk guitar, recorded by the composer for this instrument, with effects made for film music: sustain, breath, an octave below, a drone, distance, a mute, an echo. One sound, no menus. The screen shows the stereo image of what you play.",
+  "author": "Alexis Arakis (Bungle Society)",
+  "kinds": "synth",
+  "image": "fmhub.png",
+  "color": "#8fb4d0",
+  "play": "https://bunglesociety.github.io/modular-landscape/fm1/",
+  "sounds": "own: a folk guitar played with a bow, recorded by Alexis Arakis for this instrument (see SOUNDS.md). The source tree also holds Felucca's CC0 Versilian Studios samples, which are not in the packages.",
+  "smk37": {
+    "what": "Modular Landscape on the SMK-37 Elite: the bowed folk guitar across the keyboard, eight effect pads with a knob above each, faders for attack, release, space and length, PURE on the mod wheel, eight sketch pads, and the stereo image full screen.",
+    "image": "docs/img/screen-smk37.png",
+    "install": "https://bunglesociety.github.io/modular-landscape/smk37/",
+    "guide": "https://bunglesociety.github.io/modular-landscape/"
+  }
+}

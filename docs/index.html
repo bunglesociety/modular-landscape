@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modular Landscape</title>
+<style>html, body { margin: 0; }</style>
+</head>
+<body>
+<style>
+/* Modular Compagnon, page bunglesociety.com: a Squarespace code block (HTML + CSS only, no script: the Basic plan).
+   The page itself is painted in the screen's old paper (below); the rest is scoped under .mlw. FR / EN: two radio
+   buttons, CSS only. tools/make_compagnon_site.py wraps this same block into the GitHub Pages home. */
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap");
+/* the whole page on the paper: this block is only on this page, so these rules touch only it
+   (Squarespace 7.1: each section draws its colour in .section-background; the header and footer too) */
+html, body, #siteWrapper, #page, main#page, .page-section, .page-section > .section-background, .section-background,
+#footer-sections, #footer-sections .section-background, header#header, header#header .header-background-solid,
+.header-announcement-bar-wrapper { background-color: #d8dcd6 !important; background-image: none !important; }
+header#header a, header#header .header-nav-item a, header#header .header-title a, header#header .header-burger-btn,
+#footer-sections, #footer-sections p, #footer-sections a { color: #27323a !important; }
+header#header .burger-inner > div { background-color: #27323a !important; }
+.mlw { --bg: #d8dcd6; --grain: #ccd1ca; --panel: #e7eae4; --dim: #5f6b70; --ink: #27323a; --green: #4f7385; --warm: #9c5a3c;
+       --night: #232040; --shadow: rgba(39, 50, 58, .28);
+       background-color: var(--bg); background-image: radial-gradient(var(--grain) 1px, transparent 1.2px); background-size: 7px 7px;
+       color: var(--ink); font: 15px/1.65 "IBM Plex Mono", ui-monospace, Menlo, monospace;
+       padding: 28px clamp(16px, 4vw, 44px) 40px; box-sizing: border-box; text-align: left; }
+.mlw *, .mlw *::before, .mlw *::after { box-sizing: border-box; }
+.mlw p, .mlw h1, .mlw h2, .mlw h3, .mlw ul { margin: 0; padding: 0; color: var(--ink); text-transform: none; letter-spacing: normal; }
+.mlw a { color: var(--ink); }
+.mlw .px { font-family: "Silkscreen", "IBM Plex Mono", monospace !important; letter-spacing: .04em; font-weight: 400 !important; }
+
+/* the language switch: two radios, the words of the other language hidden */
+.mlw input.mlw-l { position: absolute; opacity: 0; pointer-events: none; }
+.mlw img.map { display: block; width: 100%; height: auto; margin: 8px 0 18px; border-radius: 6px; }
+.mlw .lang { display: flex; justify-content: flex-end; gap: 4px; font-family: "Silkscreen", monospace; font-size: 12px; color: var(--dim); }
+.mlw .lang label { cursor: pointer; padding: 2px 6px; color: var(--dim); }
+.mlw #mlw-fr:checked ~ .lang label[for="mlw-fr"], .mlw #mlw-en:checked ~ .lang label[for="mlw-en"] { color: var(--ink); text-decoration: underline; }
+.mlw #mlw-fr:checked ~ * .en, .mlw #mlw-en:checked ~ * .fr { display: none !important; }
+
+.mlw .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; padding: 26px 0 28px; }
+@media (max-width: 820px) { .mlw .hero { grid-template-columns: 1fr; gap: 26px; } }
+.mlw h1 { font-size: clamp(36px, 6.2vw, 62px) !important; line-height: .95 !important; margin: 0 0 18px; }
+.mlw .lead { font-size: 17px; margin-bottom: 22px; max-width: 520px; }
+.mlw .cta { display: flex; flex-wrap: wrap; gap: 14px; }
+.mlw a.btn { font-family: "Silkscreen", monospace; font-size: 15px; letter-spacing: .04em; text-decoration: none; padding: 13px 20px;
+             background: var(--ink); color: var(--bg); box-shadow: 4px 4px 0 var(--shadow); display: inline-block; }
+.mlw a.btn:hover { filter: brightness(1.18); }
+.mlw a.btn.ghost { background: transparent; color: var(--ink); outline: 3px solid var(--ink); outline-offset: -3px; box-shadow: none; }
+.mlw .note { font-size: 12.5px; color: var(--dim); margin-top: 14px; }
+.mlw .screen { background: #1d1b18; padding: 20px 20px 14px; border-radius: 10px; box-shadow: 8px 8px 0 var(--shadow); max-width: 440px; width: 100%; justify-self: center; }
+.mlw .screen img { display: block; width: 100%; height: auto; aspect-ratio: 1; image-rendering: pixelated; border: 2px solid #000; }
+.mlw .screen .lbl { color: #8c8678; font-family: "Silkscreen", monospace; font-size: 11px; letter-spacing: .08em; margin-top: 10px; display: flex; justify-content: space-between; gap: 10px; }
+
+.mlw section { padding: 30px 0 4px; border-top: 3px solid var(--ink); margin-top: 24px; }
+.mlw h2 { font-size: 22px !important; margin-bottom: 16px; }
+.mlw .story { max-width: 720px; font-size: 16px; }
+.mlw .story p + p { margin-top: 12px; }
+
+.mlw .family { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; background: var(--panel); border: 3px solid var(--ink); padding: 14px 18px; font-size: 14px; }
+.mlw .family b { font-family: "Silkscreen", monospace; font-weight: 400; letter-spacing: .04em; }
+.mlw .family .grow { flex: 1; min-width: 220px; }
+.mlw .family a { font-family: "Silkscreen", monospace; font-size: 13px; white-space: nowrap; }
+
+.mlw .feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+@media (max-width: 900px) { .mlw .feats { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .mlw .feats { grid-template-columns: 1fr; } }
+.mlw .feat { background: var(--panel); border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--shadow); }
+.mlw .feat img { display: block; width: 100%; height: auto; aspect-ratio: 1; image-rendering: pixelated; border-bottom: 3px solid var(--ink); }
+.mlw .feat div { padding: 14px 16px 16px; }
+.mlw .feat h3 { font-size: 15px !important; margin-bottom: 6px; }
+.mlw .feat p { font-size: 13.5px; }
+
+.mlw .ctl { display: grid; grid-template-columns: 12em 1fr; gap: 6px 18px; max-width: 760px; font-size: 14px; }
+@media (max-width: 600px) { .mlw .ctl { grid-template-columns: 1fr; gap: 2px; } .mlw .ctl dd { margin-bottom: 8px !important; } }
+.mlw .ctl dt { font-family: "Silkscreen", monospace; font-size: 13px; letter-spacing: .03em; }
+.mlw .ctl dd { margin: 0; }
+
+.mlw ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+@media (max-width: 760px) { .mlw ol.steps { grid-template-columns: 1fr; } }
+.mlw ol.steps li { counter-increment: s; background: var(--panel); border: 3px solid var(--ink); padding: 16px 16px 14px; font-size: 14px; margin: 0; }
+.mlw ol.steps li::before { content: counter(s); font-family: "Silkscreen", monospace; font-size: 28px; display: block; line-height: 1; margin-bottom: 8px; color: var(--green); }
+.mlw .after { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.mlw .faq details { border-bottom: 2px dashed var(--dim); padding: 10px 0; }
+.mlw .faq summary { cursor: pointer; font-weight: 600; list-style: none; }
+.mlw .faq summary::-webkit-details-marker { display: none; }
+.mlw .faq summary::before { content: "▸ "; font-family: "Silkscreen", monospace; }
+.mlw .faq details[open] summary::before { content: "▾ "; }
+.mlw .faq p { margin: 8px 0 4px 18px; font-size: 14px; }
+.mlw .foot { margin-top: 34px; font-size: 12.5px; color: var(--dim); border-top: 3px solid var(--ink); padding-top: 12px; }
+.mlw .foot a { color: var(--dim); }
+.mlw .video { position: relative; aspect-ratio: 16 / 9; border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--shadow); background: #000; max-width: 820px; }
+.mlw .video { display: block; }
+.mlw .video img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mlw .video .play { position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%;
+       background: rgba(39, 50, 58, .86); color: #f0e8d6; font-size: 34px; line-height: 84px; text-align: center; text-indent: 6px; }
+.mlw a.video:hover .play { background: #9c5a3c; }
+</style>
+
+<div class="mlw">
+  <input type="radio" name="mlw-lang" id="mlw-fr" class="mlw-l" checked>
+  <input type="radio" name="mlw-lang" id="mlw-en" class="mlw-l">
+  <div class="lang"><label for="mlw-fr">FR</label>/<label for="mlw-en">EN</label></div>
+
+  <div class="hero">
+    <div>
+      <h1 class="px">Modular<br>Landscape</h1>
+      <p class="lead"><span class="fr">Un firmware gratuit pour le clavier M-VAVE SMK-37 Elite et le synthé M-VAVE FM-1. Une guitare folk jouée à l'archet, enregistrée pour cet instrument, et des effets pensés pour la musique de film. On allume, on joue.</span><span class="en">A free firmware for the M-VAVE SMK-37 Elite keyboard and the M-VAVE FM-1 synth. A folk guitar played with a bow, recorded for this instrument, and effects made for film music. Switch on and play.</span></p>
+      <p class="note" style="margin:0 0 22px"><span class="fr">Par Alexis Arakis, compositeur, Bungle Society</span><span class="en">By Alexis Arakis, composer, Bungle Society</span> · <a href="https://www.youtube.com/@bunglesociety" target="_blank" rel="noopener">YouTube</a></p>
+      <div class="cta">
+        <a class="btn" href="./smk37/" target="_blank" rel="noopener"><span class="fr">Installer sur le SMK-37</span><span class="en">Install on the SMK-37</span></a>
+        <a class="btn" href="./fm1/" target="_blank" rel="noopener"><span class="fr">Installer sur le FM-1</span><span class="en">Install on the FM-1</span></a>
+        <a class="btn ghost" href="https://github.com/bunglesociety/modular-landscape" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="note"><span class="fr">SMK-37 Elite : version 1.0. FM-1 : version 0.4, bêta. Gratuit et libre (GPL-3.0). Chrome ou Edge sur ordinateur.</span><span class="en">SMK-37 Elite: version 1.0. FM-1: version 0.4, beta. Free and open source (GPL-3.0). Chrome or Edge on a computer.</span></p>
+    </div>
+    <div class="screen">
+      <img src="./img/screen-smk37.png" alt="Modular Landscape" width="240" height="240">
+      <div class="lbl"><span>SMK-37 ELITE · FM-1</span><span>MODULAR LANDSCAPE</span></div>
+    </div>
+  </div>
+
+  <div class="family">
+    <span class="grow"><b><span class="fr">La famille Modular</span><span class="en">The Modular family</span></b> <span class="fr">Modular Town, le synthé-ville pour ton ordinateur (un patch gratuit pour Amorph). Modular One, son petit frère sur le FM-1. Modular Compagnon et ses compagnons, sur le SMK-37 et le FM-1. Modular Landscape, la guitare à l'archet.</span><span class="en">Modular Town, the town-synth for your computer (a free patch for Amorph). Modular One, its little brother on the FM-1. Modular Compagnon and its companions, on the SMK-37 and the FM-1. Modular Landscape, the bowed guitar.</span></span>
+    <a href="https://amorph.audio/patches/modular-town-v3/" target="_blank" rel="noopener">Modular Town →</a>
+    <a href="https://bunglesociety.github.io/modular-one/" target="_blank" rel="noopener">Modular One →</a>
+    <a href="https://bunglesociety.github.io/modular-compagnon/" target="_blank" rel="noopener">Modular Compagnon →</a>
+  </div>
+
+  <section>
+    <h2 class="px"><span class="fr">Une guitare jouée à l'archet</span><span class="en">A guitar played with a bow</span></h2>
+    <div class="story"><p class="fr">J'ai joué des pièces à la guitare folk avec un archet, pour cet instrument. Chaque note vient de ces pièces : on entend le crin qui accroche, le bois qui sonne, l'archet qui se pose. Les notes ont été choisies pour sonner entre elles, pas une par une.</p><p class="en">I played pieces on a folk guitar with a bow, for this instrument. Every note comes from those pieces: you hear the hair biting, the wood ringing, the bow settling. The notes were chosen to sound together, not one by one.</p><p class="fr">Il n'y a pas de banque ni de menu. Un seul son, sur tout le clavier, et quelques gestes pour l'emmener ailleurs : le tenir, le faire respirer, l'éloigner, le doubler à l'octave du dessous, en faire un bourdon.</p><p class="en">There are no banks and no menus. One sound across the whole keyboard, and a few gestures to take it elsewhere: hold it, let it breathe, move it away, double it an octave below, turn it into a drone.</p></div>
+  </section>
+
+  <section>
+    <h2 class="px"><span class="fr">Les effets</span><span class="en">The effects</span></h2>
+    <dl class="ctl">
+      <dt>SUSTAIN</dt><dd><span class="fr">La note tient tant que la touche est enfoncée, sans couture.</span><span class="en">The note holds as long as the key, seamlessly.</span></dd>
+      <dt>BREATH</dt><dd><span class="fr">Les notes tenues enflent et retombent ensemble, comme une respiration.</span><span class="en">Held notes swell and ebb together, like breathing.</span></dd>
+      <dt>CONTRA</dt><dd><span class="fr">La note la plus grave est doublée une octave en dessous, avec les mêmes prises d'archet. Elle suit la basse quand on change d'accord.</span><span class="en">The lowest note is doubled an octave below, with the same bow takes. It follows the bass when the chord changes.</span></dd>
+      <dt>DRONE</dt><dd><span class="fr">La note la plus grave devient un bourdon qui respire.</span><span class="en">The lowest note becomes a breathing drone.</span></dd>
+      <dt>DISTANCE</dt><dd><span class="fr">Le son s'éloigne : moins de son direct, plus de salle, plus sombre.</span><span class="en">The sound moves away: less direct sound, more room, darker.</span></dd>
+      <dt>MUTE</dt><dd><span class="fr">Un son fermé et feutré, comme une sourdine.</span><span class="en">A closed, muffled tone, like a mute.</span></dd>
+      <dt>ECHO</dt><dd><span class="fr">Un écho en croche pointée, au tempo de ton logiciel s'il envoie son horloge MIDI.</span><span class="en">A dotted-eighth echo, at your DAW's tempo if it sends its MIDI clock.</span></dd>
+      <dt>WIDTH</dt><dd><span class="fr">La largeur de l'archet dans l'espace stéréo (sur le SMK-37 : le haut-parleur du FM-1 est mono).</span><span class="en">The bow's width in the stereo field (on the SMK-37: the FM-1's speaker is mono).</span></dd>
+      <dt>PURE</dt><dd><span class="fr">Le bruit d'archet disparaît, la note reste.</span><span class="en">The bow's noise goes, the note stays.</span></dd>
+    </dl>
+    <p class="note"><span class="fr">Tout peut s'allumer en même temps : les effets sont faits pour s'accorder.</span><span class="en">Everything can be on at once: the effects are made to go together.</span></p>
+  </section>
+
+  <section>
+    <h2 class="px"><span class="fr">Les commandes</span><span class="en">The controls</span></h2>
+    <h3 class="px" style="font-size:15px;margin:0 0 10px">SMK-37 Elite</h3>
+    <dl class="ctl">
+      <dt><span class="fr">Pads 9 à 16</span><span class="en">Pads 9 to 16</span></dt><dd><span class="fr">Un effet chacun : SUSTAIN, BREATH, CONTRA, DRONE, WIDTH, DISTANCE, MUTE, ECHO. Un appui l'allume ou le coupe ; le pad s'allume en bleu.</span><span class="en">One effect each: SUSTAIN, BREATH, CONTRA, DRONE, WIDTH, DISTANCE, MUTE, ECHO. A touch turns it on or off; the pad lights blue.</span></dd>
+      <dt>K1 – K8</dt><dd><span class="fr">Le potard au-dessus de chaque pad règle la quantité de son effet. K1 : le volume général.</span><span class="en">The knob above each pad sets how much of its effect. K1: the overall volume.</span></dd>
+      <dt><span class="fr">4 faders</span><span class="en">4 faders</span></dt><dd><span class="fr">ATTACK, RELEASE, SPACE (la reverb), LENGTH (la durée du coup d'archet).</span><span class="en">ATTACK, RELEASE, SPACE (the reverb), LENGTH (how long the bow stroke lasts).</span></dd>
+      <dt><span class="fr">Molette</span><span class="en">Mod wheel</span></dt><dd>PURE.</dd>
+      <dt><span class="fr">Pads 1 à 8</span><span class="en">Pads 1 to 8</span></dt><dd><span class="fr">Les esquisses : un appui enregistre, un second appui garde, un pad plein rejoue son esquisse en boucle.</span><span class="en">Sketches: a touch records, a second touch keeps, a full pad loops its sketch.</span></dd>
+    </dl>
+    <h3 class="px" style="font-size:15px;margin:22px 0 10px">FM-1</h3>
+    <dl class="ctl">
+      <dt>K1 – K4</dt><dd><span class="fr">LENGTH, ATTACK, SPACE, RELEASE. SAVE garde ton réglage pour le prochain allumage.</span><span class="en">LENGTH, ATTACK, SPACE, RELEASE. SAVE keeps your setting for the next power-on.</span></dd>
+      <dt>PRESETS</dt><dd>PURE.</dd>
+      <dt>FX · SCL · ENV · LFO</dt><dd>SUSTAIN · BREATH · CONTRA · DRONE.</dd>
+      <dt>EDIT · ARP · HOME</dt><dd><span class="fr">DISTANCE · MUTE · ECHO. SELECT règle la quantité du dernier effet touché.</span><span class="en">DISTANCE · MUTE · ECHO. SELECT sets how much of the last effect touched.</span></dd>
+      <dt>PLAY · REC · SEQ</dt><dd><span class="fr">Le magnéto et le carnet de croquis de Modular One.</span><span class="en">Modular One's tape and sketchbook.</span></dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2 class="px"><span class="fr">L'écran</span><span class="en">The screen</span></h2>
+    <div class="feats">
+      <div class="feat"><img src="./img/screen-smk37.png" alt="" width="240" height="240" loading="lazy"><div><h3 class="px"><span class="fr">L'image stéréo</span><span class="en">The stereo image</span></h3><p><span class="fr">Tout l'écran montre le son : un trait fin quand il est mono, une forme qui s'ouvre quand il s'élargit. En bas, une ligne discrète donne la corrélation.</span><span class="en">The whole screen shows the sound: a thin line when it is mono, a shape that opens as it widens. At the bottom, a quiet line gives the correlation.</span></p></div></div>
+      <div class="feat"><img src="./img/screen-fm1.png" alt="" width="240" height="240" loading="lazy"><div><h3 class="px"><span class="fr">Sur le FM-1</span><span class="en">On the FM-1</span></h3><p><span class="fr">La même image, en vert sur l'écran du FM-1. Les effets actifs s'écrivent en haut.</span><span class="en">The same image, in green on the FM-1's screen. The effects that are on are written at the top.</span></p></div></div>
+      <div class="feat"><div><h3 class="px"><span class="fr">Le réglage touché</span><span class="en">The control you touch</span></h3><p><span class="fr">Son nom et sa valeur s'affichent en grand un bref instant, puis l'image revient. Rien d'autre ne s'affiche.</span><span class="en">Its name and value show large for a moment, then the image comes back. Nothing else is shown.</span></p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="px"><span class="fr">L'installer</span><span class="en">Install it</span></h2>
+    <ol class="steps"><li><span class="fr">Ouvre la page d'installation de ton appareil dans Chrome ou Edge, sur ton ordinateur.</span><span class="en">Open your device's install page in Chrome or Edge, on your computer.</span></li><li><span class="fr">Branche le SMK-37 Elite ou le FM-1 en USB, directement, sans hub.</span><span class="en">Connect the SMK-37 Elite or the FM-1 by USB, directly, no hub.</span></li><li><span class="fr">Clique Installer et attends environ deux minutes, sans rien débrancher.</span><span class="en">Click Install and wait about two minutes, unplugging nothing.</span></li></ol>
+    <div class="after"><a class="btn" href="./smk37/" target="_blank" rel="noopener">SMK-37 Elite</a><a class="btn" href="./fm1/" target="_blank" rel="noopener">FM-1</a><span class="note" style="margin:0"><span class="fr">Sur le SMK-37, la même page remet le firmware d'origine. Sur le FM-1, c'est l'outil de mise à jour de M-VAVE.</span><span class="en">On the SMK-37 the same page puts the original firmware back. On the FM-1, use M-VAVE's updater.</span></span></div>
+  </section>
+
+  <section class="faq">
+    <h2 class="px">Questions</h2>
+    <details><summary><span class="fr">C'est gratuit ?</span><span class="en">Is it free?</span></summary><p><span class="fr">Oui. Le firmware est un logiciel libre (GPL-3.0) : le code est sur GitHub, tu peux le lire, le modifier et le partager.</span><span class="en">Yes. The firmware is free software (GPL-3.0): the code is on GitHub, you can read it, change it and share it.</span></p></details>
+    <details><summary><span class="fr">Je peux utiliser le son dans ma musique ?</span><span class="en">Can I use the sound in my music?</span></summary><p><span class="fr">Oui, dans tous tes morceaux, y compris commerciaux, sans rien me demander. Les enregistrements de guitare restent à moi : on ne peut pas les extraire pour les distribuer ou les vendre comme samples (voir SOUNDS.md sur GitHub).</span><span class="en">Yes, in all your music, commercial included, without asking. The guitar recordings stay mine: they may not be extracted to be shared or sold as samples (see SOUNDS.md on GitHub).</span></p></details>
+    <details><summary><span class="fr">Ça marche sur le SMK-37 Pro ou le MKE-P37 ?</span><span class="en">Does it work on the SMK-37 Pro or the MKE-P37?</span></summary><p><span class="fr">Pas pour l'instant : seulement sur le SMK-37 Elite et le FM-1. Chaque page d'installation refuse les autres modèles : rien n'est écrit dessus.</span><span class="en">Not for now: only the SMK-37 Elite and the FM-1. Each install page refuses other models: nothing is written to them.</span></p></details>
+    <details><summary><span class="fr">Et mes presets actuels ?</span><span class="en">What about my current presets?</span></summary><p><span class="fr">Les presets et réglages du firmware d'origine sont perdus à l'installation.</span><span class="en">The original firmware's presets and settings are lost when installing.</span></p></details>
+    <details><summary><span class="fr">Ça marche sur Mac, Windows, iPad ?</span><span class="en">Mac, Windows, iPad?</span></summary><p><span class="fr">Sur Mac, Windows et Linux, dans Chrome ou Edge. Pas dans Safari ni Firefox, et pas sur iPhone ou iPad : ils n'ont pas le MIDI web.</span><span class="en">Mac, Windows and Linux, in Chrome or Edge. Not Safari or Firefox, and not on iPhone or iPad: they have no Web MIDI.</span></p></details>
+    <details><summary><span class="fr">C'est risqué ?</span><span class="en">Is it risky?</span></summary><p><span class="fr">C'est un firmware non officiel, testé sur les appareils de l'auteur ; la version FM-1 est encore une bêta. L'installation ne touche jamais au démarrage de l'appareil, et une installation interrompue se reprend en recliquant sur Installer.</span><span class="en">It is an unofficial firmware, tested on the author's devices; the FM-1 version is still a beta. The install never touches the device's boot, and an interrupted install resumes by clicking Install again.</span></p></details>
+  </section>
+
+  <p class="foot"><span class="fr">Basé sur</span><span class="en">Based on</span> <a href="https://github.com/hugelton/Felucca" target="_blank" rel="noopener">Felucca</a> by Leo Kuroshita (@kurogedelic), <a href="https://hugelton.com" target="_blank" rel="noopener">Hügelton Instruments</a>. <span class="fr">Merci à lui du fond du cœur.</span><span class="en">Heartfelt thanks to him.</span><br>
+    <span class="fr">Logiciel libre GPL-3.0, sans garantie. Enregistrements de guitare : © Alexis Arakis. Code source :</span><span class="en">Free software, GPL-3.0, no warranty. Guitar recordings: © Alexis Arakis. Source:</span> <a href="https://github.com/bunglesociety/modular-landscape" target="_blank" rel="noopener">github.com/bunglesociety/modular-landscape</a>. <span class="fr">M-VAVE, SMK-37 et FM-1 sont des marques de leurs propriétaires. Modular Landscape n'est ni fait ni soutenu par M-VAVE ou Hügelton Instruments.</span><span class="en">M-VAVE, SMK-37 and FM-1 are trademarks of their respective owners. Modular Landscape is not made or supported by M-VAVE or Hügelton Instruments.</span></p>
+</div>
+</body>
+</html>
