@@ -8,6 +8,6 @@
 set -e
 cd "$(dirname "$0")"
 SMK_VERSION=1.0
-FM1_VERSION=0.4.1
+FM1_VERSION=0.4.2
 (cd smk37 && ARCHET=1 BOARD=smk37 MODEL=elite python3 tools/build.py --release "$SMK_VERSION" --ident 894)
 (cd fm1 && BOARD=land python3 tools/build.py --release "$FM1_VERSION" --ident 894)
