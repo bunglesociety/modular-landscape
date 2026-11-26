@@ -48,6 +48,13 @@ header#header .burger-inner > div { background-color: #27323a !important; }
 .mlw a.btn:hover { filter: brightness(1.18); }
 .mlw a.btn.ghost { background: transparent; color: var(--ink); outline: 3px solid var(--ink); outline-offset: -3px; box-shadow: none; }
 .mlw .note { font-size: 12.5px; color: var(--dim); margin-top: 14px; }
+.mlw .warm { color: var(--warm); }
+.mlw .photo { background: #1d1b18; padding: 14px; border-radius: 10px; box-shadow: 8px 8px 0 var(--shadow); max-width: 440px; width: 100%; justify-self: center; transform: rotate(1.5deg); }
+.mlw .photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 40%; border: 2px solid #000; border-radius: 3px; }
+.mlw .fx { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.mlw .fx > div { background: var(--panel); border: 3px solid var(--ink); padding: 14px 16px; }
+.mlw .fx b { display: block; font-size: 14px; color: var(--warm); }
+.mlw .fx p { font-size: 13.5px; }
 .mlw .screen { background: #1d1b18; padding: 20px 20px 14px; border-radius: 10px; box-shadow: 8px 8px 0 var(--shadow); max-width: 440px; width: 100%; justify-self: center; }
 .mlw .screen img { display: block; width: 100%; height: auto; aspect-ratio: 1; image-rendering: pixelated; border: 2px solid #000; }
 .mlw .screen .lbl { color: #8c8678; font-family: "Silkscreen", monospace; font-size: 11px; letter-spacing: .08em; margin-top: 10px; display: flex; justify-content: space-between; gap: 10px; }
@@ -55,6 +62,7 @@ header#header .burger-inner > div { background-color: #27323a !important; }
 .mlw section { padding: 30px 0 4px; border-top: 3px solid var(--ink); margin-top: 24px; }
 .mlw h2 { font-size: 22px !important; margin-bottom: 16px; }
 .mlw .story { max-width: 720px; font-size: 16px; }
+.mlw section .story + img.map { margin-top: 16px; }
 .mlw .story p + p { margin-top: 12px; }
 
 .mlw .family { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; background: var(--panel); border: 3px solid var(--ink); padding: 14px 18px; font-size: 14px; }
@@ -79,7 +87,7 @@ header#header .burger-inner > div { background-color: #27323a !important; }
 .mlw ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 @media (max-width: 760px) { .mlw ol.steps { grid-template-columns: 1fr; } }
 .mlw ol.steps li { counter-increment: s; background: var(--panel); border: 3px solid var(--ink); padding: 16px 16px 14px; font-size: 14px; margin: 0; }
-.mlw ol.steps li::before { content: counter(s); font-family: "Silkscreen", monospace; font-size: 28px; display: block; line-height: 1; margin-bottom: 8px; color: var(--green); }
+.mlw ol.steps li::before { content: counter(s); font-family: "Silkscreen", monospace; font-size: 28px; display: block; line-height: 1; margin-bottom: 8px; color: var(--warm); }
 .mlw .after { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 .mlw .faq details { border-bottom: 2px dashed var(--dim); padding: 10px 0; }
 .mlw .faq summary { cursor: pointer; font-weight: 600; list-style: none; }
@@ -104,7 +112,7 @@ header#header .burger-inner > div { background-color: #27323a !important; }
 
   <div class="hero">
     <div>
-      <h1 class="px">Modular<br>Landscape</h1>
+      <h1 class="px">Modular<br><span class="warm">Landscape</span></h1>
       <p class="lead"><span class="fr">Un firmware gratuit pour le clavier M-VAVE SMK-37 Elite et le synthé M-VAVE FM-1. Une guitare folk jouée à l'archet, enregistrée pour cet instrument, et des effets pensés pour la musique de film. On allume, on joue.</span><span class="en">A free firmware for the M-VAVE SMK-37 Elite keyboard and the M-VAVE FM-1 synth. A folk guitar played with a bow, recorded for this instrument, and effects made for film music. Switch on and play.</span></p>
       <p class="note" style="margin:0 0 22px"><span class="fr">Par Alexis Arakis, compositeur, Bungle Society</span><span class="en">By Alexis Arakis, composer, Bungle Society</span> · <a href="https://www.youtube.com/@bunglesociety" target="_blank" rel="noopener">YouTube</a></p>
       <div class="cta">
@@ -114,9 +122,8 @@ header#header .burger-inner > div { background-color: #27323a !important; }
       </div>
       <p class="note"><span class="fr">SMK-37 Elite : version 1.0. FM-1 : version 0.4.2, bêta. Gratuit et libre (GPL-3.0). Chrome ou Edge sur ordinateur.</span><span class="en">SMK-37 Elite: version 1.0. FM-1: version 0.4.2, beta. Free and open source (GPL-3.0). Chrome or Edge on a computer.</span></p>
     </div>
-    <div class="screen">
-      <img src="./img/screen-smk37.png" alt="Modular Landscape" width="240" height="240">
-      <div class="lbl"><span>SMK-37 ELITE · FM-1</span><span>MODULAR LANDSCAPE</span></div>
+    <div class="photo">
+      <img src="./img/guitare-archet.jpg" alt="" width="900" height="1200">
     </div>
   </div>
 
@@ -133,47 +140,26 @@ header#header .burger-inner > div { background-color: #27323a !important; }
   </section>
 
   <section>
-    <h2 class="px"><span class="fr">Les effets</span><span class="en">The effects</span></h2>
-    <dl class="ctl">
-      <dt>SUSTAIN</dt><dd><span class="fr">La note tient tant que la touche est enfoncée, sans couture.</span><span class="en">The note holds as long as the key, seamlessly.</span></dd>
-      <dt>BREATH</dt><dd><span class="fr">Les notes tenues enflent et retombent ensemble, comme une respiration.</span><span class="en">Held notes swell and ebb together, like breathing.</span></dd>
-      <dt>CONTRA</dt><dd><span class="fr">La note la plus grave est doublée une octave en dessous, avec les mêmes prises d'archet. Elle suit la basse quand on change d'accord.</span><span class="en">The lowest note is doubled an octave below, with the same bow takes. It follows the bass when the chord changes.</span></dd>
-      <dt>DRONE</dt><dd><span class="fr">La note la plus grave devient un bourdon qui respire.</span><span class="en">The lowest note becomes a breathing drone.</span></dd>
-      <dt>DISTANCE</dt><dd><span class="fr">Le son s'éloigne : moins de son direct, plus de salle, plus sombre.</span><span class="en">The sound moves away: less direct sound, more room, darker.</span></dd>
-      <dt>MUTE</dt><dd><span class="fr">Un son fermé et feutré, comme une sourdine.</span><span class="en">A closed, muffled tone, like a mute.</span></dd>
-      <dt>ECHO</dt><dd><span class="fr">Un écho en croche pointée, au tempo de ton logiciel s'il envoie son horloge MIDI.</span><span class="en">A dotted-eighth echo, at your DAW's tempo if it sends its MIDI clock.</span></dd>
-      <dt>WIDTH</dt><dd><span class="fr">La largeur de l'archet dans l'espace stéréo (sur le SMK-37 : le haut-parleur du FM-1 est mono).</span><span class="en">The bow's width in the stereo field (on the SMK-37: the FM-1's speaker is mono).</span></dd>
-      <dt>PURE</dt><dd><span class="fr">Le bruit d'archet disparaît, la note reste.</span><span class="en">The bow's noise goes, the note stays.</span></dd>
-    </dl>
-    <p class="note"><span class="fr">Tout peut s'allumer en même temps : les effets sont faits pour s'accorder.</span><span class="en">Everything can be on at once: the effects are made to go together.</span></p>
-  </section>
-
-  <section>
     <h2 class="px"><span class="fr">Les commandes</span><span class="en">The controls</span></h2>
-    <h3 class="px" style="font-size:15px;margin:0 0 10px">SMK-37 Elite</h3>
-    <dl class="ctl">
-      <dt><span class="fr">Pads 9 à 16</span><span class="en">Pads 9 to 16</span></dt><dd><span class="fr">Un effet chacun : SUSTAIN, BREATH, CONTRA, DRONE, WIDTH, DISTANCE, MUTE, ECHO. Un appui l'allume ou le coupe ; le pad s'allume en bleu.</span><span class="en">One effect each: SUSTAIN, BREATH, CONTRA, DRONE, WIDTH, DISTANCE, MUTE, ECHO. A touch turns it on or off; the pad lights blue.</span></dd>
-      <dt>K1 – K8</dt><dd><span class="fr">Le potard au-dessus de chaque pad règle la quantité de son effet. K1 : le volume général.</span><span class="en">The knob above each pad sets how much of its effect. K1: the overall volume.</span></dd>
-      <dt><span class="fr">4 faders</span><span class="en">4 faders</span></dt><dd><span class="fr">ATTACK, RELEASE, SPACE (la reverb), LENGTH (la durée du coup d'archet).</span><span class="en">ATTACK, RELEASE, SPACE (the reverb), LENGTH (how long the bow stroke lasts).</span></dd>
-      <dt><span class="fr">Molette</span><span class="en">Mod wheel</span></dt><dd>PURE.</dd>
-      <dt><span class="fr">Pads 1 à 8</span><span class="en">Pads 1 to 8</span></dt><dd><span class="fr">Les esquisses : un appui enregistre, un second appui garde, un pad plein rejoue son esquisse en boucle.</span><span class="en">Sketches: a touch records, a second touch keeps, a full pad loops its sketch.</span></dd>
-    </dl>
-    <h3 class="px" style="font-size:15px;margin:22px 0 10px">FM-1</h3>
-    <dl class="ctl">
-      <dt>K1 – K4</dt><dd><span class="fr">LENGTH, ATTACK, SPACE, RELEASE. SAVE garde ton réglage pour le prochain allumage.</span><span class="en">LENGTH, ATTACK, SPACE, RELEASE. SAVE keeps your setting for the next power-on.</span></dd>
-      <dt>PRESETS</dt><dd>PURE.</dd>
-      <dt>FX · SCL · ENV · LFO</dt><dd>SUSTAIN · BREATH · CONTRA · DRONE.</dd>
-      <dt>EDIT · ARP · HOME</dt><dd><span class="fr">DISTANCE · MUTE · ECHO. SELECT règle la quantité du dernier effet touché.</span><span class="en">DISTANCE · MUTE · ECHO. SELECT sets how much of the last effect touched.</span></dd>
-      <dt>PLAY · REC · SEQ</dt><dd><span class="fr">Le magnéto et le carnet de croquis de Modular One.</span><span class="en">Modular One's tape and sketchbook.</span></dd>
-    </dl>
+    <p class="story"><span class="fr">Chaque commande avec son rôle. Les effets s'allument et se coupent d'un appui, et tout peut jouer en même temps.</span><span class="en">Every control with its job. The effects turn on and off with a touch, and everything can play at once.</span></p>
+    <img class="map fr" src="./img/commandes-smk37-fr.png" alt="Le SMK-37 Elite vu de dessus, chaque commande avec son rôle" width="1600" height="900" loading="lazy">
+    <img class="map en" src="./img/controls-smk37-en.png" alt="The SMK-37 Elite seen from above, every control with its job" width="1600" height="900" loading="lazy">
+    <img class="map fr" src="./img/commandes-fm1-fr.png" alt="Le FM-1 vu de dessus, chaque commande avec son rôle" width="1600" height="900" loading="lazy">
+    <img class="map en" src="./img/controls-fm1-en.png" alt="The FM-1 seen from above, every control with its job" width="1600" height="900" loading="lazy">
   </section>
 
   <section>
-    <h2 class="px"><span class="fr">L'écran</span><span class="en">The screen</span></h2>
-    <div class="feats">
-      <div class="feat"><img src="./img/screen-smk37.png" alt="" width="240" height="240" loading="lazy"><div><h3 class="px"><span class="fr">L'image stéréo</span><span class="en">The stereo image</span></h3><p><span class="fr">Tout l'écran montre le son : un trait fin quand il est mono, une forme qui s'ouvre quand il s'élargit. En bas, une ligne discrète donne la corrélation.</span><span class="en">The whole screen shows the sound: a thin line when it is mono, a shape that opens as it widens. At the bottom, a quiet line gives the correlation.</span></p></div></div>
-      <div class="feat"><img src="./img/screen-fm1.png" alt="" width="240" height="240" loading="lazy"><div><h3 class="px"><span class="fr">Sur le FM-1</span><span class="en">On the FM-1</span></h3><p><span class="fr">La même image, en vert sur l'écran du FM-1. Les effets actifs s'écrivent en haut.</span><span class="en">The same image, in green on the FM-1's screen. The effects that are on are written at the top.</span></p></div></div>
-      <div class="feat"><div><h3 class="px"><span class="fr">Le réglage touché</span><span class="en">The control you touch</span></h3><p><span class="fr">Son nom et sa valeur s'affichent en grand un bref instant, puis l'image revient. Rien d'autre ne s'affiche.</span><span class="en">Its name and value show large for a moment, then the image comes back. Nothing else is shown.</span></p></div></div>
+    <h2 class="px"><span class="fr">Les effets</span><span class="en">The effects</span></h2>
+    <div class="fx">
+      <div><b class="px">SUSTAIN</b><p><span class="fr">La note tient tant que la touche est enfoncée, sans couture.</span><span class="en">The note holds as long as the key, seamlessly.</span></p></div>
+      <div><b class="px">BREATH</b><p><span class="fr">Les notes tenues enflent et retombent ensemble, comme une respiration.</span><span class="en">Held notes swell and ebb together, like breathing.</span></p></div>
+      <div><b class="px">CONTRA</b><p><span class="fr">La note la plus grave est doublée une octave en dessous, avec les mêmes prises d'archet. Elle suit la basse quand on change d'accord.</span><span class="en">The lowest note is doubled an octave below, with the same bow takes. It follows the bass when the chord changes.</span></p></div>
+      <div><b class="px">DRONE</b><p><span class="fr">La note la plus grave devient un bourdon qui respire.</span><span class="en">The lowest note becomes a breathing drone.</span></p></div>
+      <div><b class="px">DISTANCE</b><p><span class="fr">Le son s'éloigne : moins de son direct, plus de salle, plus sombre.</span><span class="en">The sound moves away: less direct sound, more room, darker.</span></p></div>
+      <div><b class="px">MUTE</b><p><span class="fr">Un son fermé et feutré, comme une sourdine.</span><span class="en">A closed, muffled tone, like a mute.</span></p></div>
+      <div><b class="px">ECHO</b><p><span class="fr">Un écho en croche pointée, au tempo de ton logiciel s'il envoie son horloge MIDI.</span><span class="en">A dotted-eighth echo, at your DAW's tempo if it sends its MIDI clock.</span></p></div>
+      <div><b class="px">WIDTH</b><p><span class="fr">La largeur de l'archet dans l'espace stéréo (sur le SMK-37 : le haut-parleur du FM-1 est mono).</span><span class="en">The bow's width in the stereo field (on the SMK-37: the FM-1's speaker is mono).</span></p></div>
+      <div><b class="px">PURE</b><p><span class="fr">Le bruit d'archet disparaît, la note reste.</span><span class="en">The bow's noise goes, the note stays.</span></p></div>
     </div>
   </section>
 

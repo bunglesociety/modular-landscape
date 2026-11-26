@@ -49,10 +49,10 @@ def page(tree, tmpl, text, hero, pkg, version, local):
     html = re.sub(r'\$\("home"\)\.href = "[^"]*"', f'$("home").href = "{SITE}"', html)
     html = re.sub(r"Copyright \(C\) 2026 Alexis Arakis \(Bungle Society\) \(Modular Compagnon\)",
                   "Copyright (C) 2026 Alexis Arakis (Bungle Society) (Modular Landscape)", html)
-    if 'id="map"' in html:                                   # the SMK-37's: no controls picture for Landscape
-        html = sub1(html, '    <img class="map" id="map" alt="" width="1600" height="900">\n', "")
-        html = sub1(html, '  const map = document.getElementById("map"); map.src = MAP[lang] || MAP.en; map.alt = t("mapAlt");\n', "")
-        html = sub1(html, "/*MAP*/", "{}")
+    if 'id="map"' in html:                                   # the SMK-37's: Landscape's controls picture
+        img = ROOT / "docs" / "img"
+        uri = lambda f: "data:image/png;base64," + base64.b64encode((img / f).read_bytes()).decode()
+        html = sub1(html, "/*MAP*/", json.dumps({"fr": uri("commandes-smk37-fr.png"), "en": uri("controls-smk37-en.png")}))
     lib = "\n".join(strip_module((web / f).read_text(encoding="utf-8")) for f in ("fm1pkg.js", "fm1ota.js"))
     raw = pkg.read_bytes()
     meta = {"version": version, "product": product_of(raw), "local": 1 if local else 0, "b64": base64.b64encode(raw).decode()}
