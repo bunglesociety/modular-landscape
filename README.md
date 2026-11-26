@@ -20,7 +20,7 @@ In Chrome or Edge, on a computer / Dans Chrome ou Edge, sur un ordinateur :
 
 - **SMK-37 Elite**, version 1.0: [bunglesociety.github.io/modular-landscape/smk37/](https://bunglesociety.github.io/modular-landscape/smk37/)
   (the same page puts the original firmware back / la même page remet le firmware d'origine)
-- **FM-1**, version 0.4 beta: [bunglesociety.github.io/modular-landscape/fm1/](https://bunglesociety.github.io/modular-landscape/fm1/)
+- **FM-1**, version 0.4.1 beta: [bunglesociety.github.io/modular-landscape/fm1/](https://bunglesociety.github.io/modular-landscape/fm1/)
   (back to the original firmware: M-VAVE's updater / retour au firmware d'origine : l'outil de M-VAVE)
 
 The packages are also on the [Releases](https://github.com/bunglesociety/modular-landscape/releases) page and in
@@ -29,7 +29,7 @@ The packages are also on the [Releases](https://github.com/bunglesociety/modular
 | File | SHA-256 |
 |---|---|
 | `modular-landscape-smk37-elite-1.0.fwsc` | `867bca014534a404044d685a3e3fd2cbb7d6b82164ef76406a5656db4b7a7a34` |
-| `modular-landscape-fm1-0.4.fwsc` | `f36ac0a2b8daf4a4e67b07e5375b556f27f04f3b2ec3187f6b5c0ad0a23a45fc` |
+| `modular-landscape-fm1-0.4.1.fwsc` | `6654763b99b0b814d0e0107cf88a64ae929f8ce3439931e07c9bd73beffac87c` |
 
 Installing replaces the M-VAVE firmware; its presets are lost. Unofficial firmware, no warranty: you install it at your
 own risk. / L'installation remplace le firmware M-VAVE ; ses presets sont perdus. Firmware non officiel, sans garantie :
